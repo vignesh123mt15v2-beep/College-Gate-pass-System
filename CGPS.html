@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IGCE — College Gate Pass System</title>
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══════════════════ TOAST ══════════════════ -->
+<div id="toast" class="toast"></div>
+
+<!-- ══════════════════ LANDING / ROLE PICKER ══════════════════ -->
+<section id="landingScreen" class="screen active">
+  <div class="auth-wrap">
+
+    <div class="brand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="IGCE Logo" />
+      </div>
+      <h1>INDRA GANESAN COLLEGE OF ENGINEERING</h1>
+      <p>COLLEGE GATE PASS SYSTEM</p>
+    </div>
+
+    <div class="card auth-card landing-card">
+      <h2 class="landing-title">Choose your role to continue</h2>
+
+      <div class="role-grid">
+
+        <button class="role-card" data-goto="student" type="button">
+          <div class="role-ico student-ico">🎓</div>
+          <div class="role-info">
+            <h3>Student</h3>
+            <p>Apply for a gate pass and track your requests</p>
+          </div>
+          <span class="role-arrow">→</span>
+        </button>
+
+        <button class="role-card" data-goto="admin" type="button">
+          <div class="role-ico admin-ico">🛡️</div>
+          <div class="role-info">
+            <h3>Admin</h3>
+            <p>Review, approve, or reject student requests</p>
+          </div>
+          <span class="role-arrow">→</span>
+        </button>
+
+        <button class="role-card" data-goto="security" type="button">
+          <div class="role-ico security-ico">👮</div>
+          <div class="role-info">
+            <h3>Security</h3>
+            <p>Verify passes at the gate and log movement</p>
+          </div>
+          <span class="role-arrow">→</span>
+        </button>
+
+      </div>
+    </div>
+
+    <p class="foot-note">© 2025 Indra Ganesan College of Engineering · Demo build</p>
+  </div>
+</section>
+
+<!-- ══════════════════ STUDENT AUTH SCREEN ══════════════════ -->
+<section id="studentAuthScreen" class="screen">
+  <div class="auth-wrap">
+
+    <div class="brand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="IGCE Logo" />
+      </div>
+      <h1>INDRA GANESAN COLLEGE OF ENGINEERING</h1>
+      <p>COLLEGE GATE PASS SYSTEM</p>
+      <span class="role-badge">Student Login</span>
+    </div>
+
+    <div class="card auth-card">
+
+      <button class="back-btn" data-goto="landing" type="button">← Back to roles</button>
+
+      <div class="mini-tabs">
+        <button class="mini-tab active" data-sub="login" type="button">Login</button>
+        <button class="mini-tab" data-sub="register" type="button">Register</button>
+      </div>
+
+      <div class="auth-body">
+
+        <form id="studentLoginForm" class="form sub-form active" data-sub="login">
+          <label>Roll Number / Email
+            <input id="sLoginId" placeholder="e.g. 21CS001" required />
+          </label>
+          <label>Password
+            <input id="sLoginPass" type="password" placeholder="••••••••" required />
+          </label>
+          <button class="btn primary full" type="submit">Sign In as Student</button>
+        </form>
+
+        <form id="studentRegForm" class="form sub-form" data-sub="register">
+          <div class="two-col">
+            <label>Full Name
+              <input name="name" placeholder="Aarav Mehta" required />
+            </label>
+            <label>Roll Number
+              <input name="roll" placeholder="21CS001" required />
+            </label>
+          </div>
+          <div class="two-col">
+            <label>Email
+              <input name="email" type="email" placeholder="aarav@campus.edu" required />
+            </label>
+            <label>Phone
+              <input name="phone" placeholder="9876543210" required />
+            </label>
+          </div>
+          <div class="two-col">
+            <label>Department
+              <select name="dept" required>
+                <option value="">Select…</option>
+                <option>Computer Science</option>
+                <option>Artificial Intelligence & Data Science</option>
+                <option>Information Technology</option>
+                <option>Electronics</option>
+                <option>Mechanical</option>
+                <option>Civil</option>
+                <option>Business Administration</option>
+              </select>
+            </label>
+            <label>Year
+              <select name="year" required>
+                <option value="">Select…</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+              </select>
+            </label>
+          </div>
+          <div class="two-col">
+            <label>Password
+              <input name="password" type="password" placeholder="min 6 characters" required />
+            </label>
+            <label>Confirm Password
+              <input name="confirm" type="password" placeholder="repeat password" required />
+            </label>
+          </div>
+          <button class="btn primary full" type="submit">Create Student Account</button>
+        </form>
+
+      </div>
+    </div>
+
+    <p class="foot-note">© 2025 Indra Ganesan College of Engineering · Student Portal</p>
+  </div>
+</section>
+
+<!-- ══════════════════ ADMIN AUTH SCREEN ══════════════════ -->
+<section id="adminAuthScreen" class="screen">
+  <div class="auth-wrap">
+
+    <div class="brand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="IGCE Logo" />
+      </div>
+      <h1>INDRA GANESAN COLLEGE OF ENGINEERING</h1>
+      <p>COLLEGE GATE PASS SYSTEM</p>
+      <span class="role-badge">Admin Login</span>
+    </div>
+
+    <div class="card auth-card">
+
+      <button class="back-btn" data-goto="landing" type="button">← Back to roles</button>
+
+      <div class="auth-body">
+
+        <form id="adminLoginForm" class="form">
+          <label>Admin Username
+            <input id="aLoginUser" placeholder="admin" required />
+          </label>
+          <label>Password
+            <input id="aLoginPass" type="password" placeholder="••••••••" required />
+          </label>
+          <button class="btn primary full" type="submit">Sign In as Admin</button>
+        </form>
+
+        <div class="hint">
+          <b>Demo:</b> <code>admin</code> / <code>admin@123</code>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot-note">© 2025 Indra Ganesan College of Engineering · Admin Portal</p>
+  </div>
+</section>
+
+<!-- ══════════════════ SECURITY AUTH SCREEN ══════════════════ -->
+<section id="securityAuthScreen" class="screen">
+  <div class="auth-wrap">
+
+    <div class="brand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="IGCE Logo" />
+      </div>
+      <h1>INDRA GANESAN COLLEGE OF ENGINEERING</h1>
+      <p>COLLEGE GATE PASS SYSTEM</p>
+      <span class="role-badge">Security Login</span>
+    </div>
+
+    <div class="card auth-card">
+
+      <button class="back-btn" data-goto="landing" type="button">← Back to roles</button>
+
+      <div class="auth-body">
+
+        <form id="securityLoginForm" class="form">
+          <label>Security Username
+            <input id="gLoginUser" placeholder="security" required />
+          </label>
+          <label>Password
+            <input id="gLoginPass" type="password" placeholder="••••••••" required />
+          </label>
+          <button class="btn primary full" type="submit">Sign In as Security</button>
+        </form>
+
+        <div class="hint">
+          <b>Demo:</b> <code>security</code> / <code>guard@123</code>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot-note">© 2025 Indra Ganesan College of Engineering · Security Portal</p>
+  </div>
+</section>
+
+<!-- ══════════════════ STUDENT DASHBOARD ══════════════════ -->
+<section id="studentScreen" class="screen">
+  <header class="topbar">
+    <div class="tb-left">
+      <img class="tb-logo" src="assets/logo.png" alt="IGCE" />
+      <strong>IGCE — GATE PASS</strong>
+      <span class="tb-role">Student</span>
+    </div>
+    <div class="tb-right">
+      <span class="who" id="stuWho"></span>
+      <button class="btn ghost" type="button" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="stats" id="stuStats"></div>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>📝 Apply for Gate Pass</h2>
+        <form id="passForm" class="form">
+          <label>Reason / Purpose
+            <input name="reason" placeholder="e.g. Medical checkup" required />
+          </label>
+          <label>Destination
+            <input name="destination" placeholder="e.g. City Hospital" required />
+          </label>
+          <div class="two-col">
+            <label>From Date
+              <input name="from" type="date" required />
+            </label>
+            <label>To Date
+              <input name="to" type="date" required />
+            </label>
+          </div>
+          <div class="two-col">
+            <label>Out Time
+              <input name="outTime" type="time" required />
+            </label>
+            <label>Expected In Time
+              <input name="inTime" type="time" required />
+            </label>
+          </div>
+          <label>Remarks <span class="opt">(optional)</span>
+            <textarea name="note" rows="2" placeholder="Any additional info…"></textarea>
+          </label>
+          <button class="btn primary full" type="submit">Submit Request</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>📄 My Gate Passes</h2>
+        <div id="stuPassList" class="pass-list"></div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ══════════════════ ADMIN DASHBOARD ══════════════════ -->
+<section id="adminScreen" class="screen">
+  <header class="topbar">
+    <div class="tb-left">
+      <img class="tb-logo" src="assets/logo.png" alt="IGCE" />
+      <strong>IGCE — GATE PASS</strong>
+      <span class="tb-role">Admin</span>
+    </div>
+    <div class="tb-right">
+      <span class="who" id="admWho"></span>
+      <button class="btn ghost" type="button" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="stats" id="admStats"></div>
+
+    <div class="card">
+      <h2>🗂️ Pass Requests</h2>
+      <div class="filters" id="adminFilters">
+        <button class="chip active" data-f="pending" type="button">Pending</button>
+        <button class="chip" data-f="approved" type="button">Approved</button>
+        <button class="chip" data-f="out" type="button">Outside</button>
+        <button class="chip" data-f="returned" type="button">Returned</button>
+        <button class="chip" data-f="rejected" type="button">Rejected</button>
+        <button class="chip" data-f="all" type="button">All</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Pass ID</th><th>Student</th><th>Dept</th>
+              <th>Reason</th><th>Duration</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ══════════════════ SECURITY DASHBOARD ══════════════════ -->
+<section id="securityScreen" class="screen">
+  <header class="topbar">
+    <div class="tb-left">
+      <img class="tb-logo" src="assets/logo.png" alt="IGCE" />
+      <strong>IGCE — GATE PASS</strong>
+      <span class="tb-role">Security</span>
+    </div>
+    <div class="tb-right">
+      <span class="who" id="secWho"></span>
+      <button class="btn ghost" type="button" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="stats" id="secStats"></div>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>🔍 Verify Gate Pass</h2>
+        <div class="search-row">
+          <input id="verifyInput" placeholder="Enter Pass ID  e.g. GP-8F3K2A" />
+          <button class="btn primary" id="verifyBtn" type="button">Verify</button>
+        </div>
+        <div id="verifyResult" class="verify-result"></div>
+      </div>
+
+      <div class="card">
+        <h2>🕒 Recent Activity</h2>
+        <div id="logList" class="log-list"></div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<script src="fund.js"></script>
+</body>
+</html>
